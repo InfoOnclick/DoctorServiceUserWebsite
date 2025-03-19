@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState,useEffect,useParams } from 'react'
-=======
-import React, { useState,useEffect } from 'react'
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 import {assets, LawyerNav} from '../assets/assets'
 import { NavLink, useNavigate } from 'react-router-dom'
 import docpro from '../assets/docpro.png'
@@ -15,14 +11,11 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const LawyerNavbar = () => {
-<<<<<<< HEAD
   // const { category } = useParams();
 
   // useEffect(() => {
   //   fetchData(category);
   // }, [category]); // Runs only when category changes
-=======
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 
     const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false)
@@ -145,17 +138,10 @@ const long=location.longitude;
 
       <ul className="hidden md:flex items-center gap-6 md:gap-10 font-medium text-medium sm:text-lg md:text-lg">
         {[
-<<<<<<< HEAD
           { path: "/home/lawyer", label: "HOME" },
-          { path: "/Listing/lawyer/lawyer", label: "ALL LAWYERS" },
+          { path: "/Listing/lawyer/all", label: "ALL LAWYERS" },
           { path: "/Lawyerschedule", label: "SCHEDULE" },
           { path: "/about/lawyer", label: "ABOUT" },
-=======
-          { path: "/lawyers", label: "HOME" },
-          { path: "/allLawyers", label: "ALL LAWYERS" },
-          { path: "/Lawyerschedule", label: "SCHEDULE" },
-          { path: "/LawyerAbout", label: "ABOUT" },
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
           { path: "/LawyerContact", label: "CONTACT" }
         ].map((item, index) => (
           <NavLink key={index} to={item.path} className="relative hover:text-purple-500">

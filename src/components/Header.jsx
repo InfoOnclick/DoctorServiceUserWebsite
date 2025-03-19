@@ -1,9 +1,6 @@
 import React from 'react'
 import {assets} from '../assets/assets'
-<<<<<<< HEAD
 import { useParams } from 'react-router-dom'
-=======
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 
 const Header = () => {
   return (
@@ -28,7 +25,6 @@ const Header = () => {
   )
 }
 
-<<<<<<< HEAD
 const HeaderHome=({category})=>{
     // const {category}=useParams();
     console.log(category);
@@ -74,6 +70,3 @@ const HeaderHome=({category})=>{
 }
 
 export default HeaderHome
-=======
-export default Header
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a

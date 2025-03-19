@@ -169,7 +169,7 @@ const handleChange = (event) => {
   const { doctors,Lawyerss } = useContext(AppContext)
 
   const applyFilter = () => {
-      if(speciality) {
+      if(speciality != 'all') {
           setFilterDoc((category==='doctor'?doctors:Lawyerss).filter(doc => doc.speciality === speciality))
       }else{
           setFilterDoc((category==='doctor'?doctors:Lawyerss))
@@ -196,12 +196,14 @@ return (
     onClick={() => {
       // speciality === item.speciality
       setFilterDoc((category==='doctor'?doctors:Lawyerss).filter(doc => doc.speciality === item.speciality))
+      setSpeciality(item.speciality);
+      console.log(specialities);
       // ? navigate(`/${category==='doctor'?'doctors':'allLawyers'}`) :
         // navigate(`/${category==='doctor'?'doctors':'allLawyers'}/${item.speciality}`);
         console.log(speciality,filterDoc);
       setShowFilter(prev => !prev);
     }} 
-    className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded-full transition-all cursor-pointer ${filterDoc[0]?.speciality === item.speciality ? "bg-purple-100 text-black" : ""}`}
+    className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded-full transition-all cursor-pointer ${specialities === item.speciality ? "bg-purple-100 text-black" : ""}`}
   >
     {item.speciality}
   </p>
@@ -216,10 +218,13 @@ return (
       </div>
 
 
-       <div className="w-full overflow-x-auto sm:grid sm:grid-cols-auto gap-8 gap-y-6 flex flex-nowrap" id='nocards'>
-    {filterDoc.map((item, index) => (
+      <div className="w-full overflow-x-auto sm:grid sm:grid-cols-auto gap-8 gap-y-6 flex flex-nowrap" id='nocards'>
+  {filterDoc.length === 0 ? (
+    <h3 style={{textAlign:'center'}}>No data Found</h3>
+  ) : (
+    filterDoc.map((item, index) => (
       <div
-        onClick={() => navigate(`/${category==='doctor'?'appointment':'lawyerAppointment'}/${item._id}`)}
+        onClick={() => navigate(`/${category === 'doctor' ? 'appointment' : 'lawyerAppointment'}/${item._id}`)}
         className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500 min-w-[250px] sm:w-auto flex-shrink-0"
         key={index}
       >
@@ -238,10 +243,13 @@ return (
           <p className="text-gray-600 text-sm">{item.speciality}</p>
         </div>
       </div>
-    ))}
-  </div>
+    ))
+  )}
+</div>
+
     </div>
   </div>
+
   )
 }
 

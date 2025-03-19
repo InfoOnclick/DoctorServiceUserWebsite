@@ -2,11 +2,7 @@ import React, { useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import "./css/Services.css";
-<<<<<<< HEAD
 import { useParams } from "react-router-dom";
-=======
-
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 import doc1 from '../assets/doc1.png';
 import doc2 from '../assets/doc2.png';
 
@@ -14,11 +10,7 @@ import hospital from '../assets/hospital.jpg';
 
 const TopDoctors = () => {
   const navigate = useNavigate();
-<<<<<<< HEAD
   const { doctors,Lawyerss } = useContext(AppContext);
-=======
-  const { doctors } = useContext(AppContext);
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
   const scrollRef = useRef(null);
 
   const hospitals = [
@@ -102,7 +94,6 @@ const TopDoctors = () => {
   );
 };
 
-<<<<<<< HEAD
 
 
  const TopOnes=({category})=>{
@@ -202,6 +193,3 @@ const TopDoctors = () => {
  }
 
 export default TopOnes;
-=======
-export default TopDoctors;
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a

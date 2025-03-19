@@ -4,7 +4,6 @@ import SpecialityMenu from '../components/SpecialityMenu'
 import TopDoctors from '../components/TopDoctors'
 import Banner from '../components/Banner'
 import LawyerBanner from '../components/LawyerBanner'
-<<<<<<< HEAD
 import { useParams } from 'react-router-dom'
 import LawyerHeader from '../components/LawyerHeader'
 import LawyerSpeciality from '../components/LawyerSpeciality'
@@ -19,10 +18,6 @@ import TopOnes from '../components/TopDoctors'
 
 const Home = () => {
 
-=======
-
-const Home = () => {
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
   return (
     <div>
       <Header/>
@@ -33,7 +28,6 @@ const Home = () => {
   )
 }
 
-<<<<<<< HEAD
 
 const Homes = ({category}) => {
   // const { category } = useParams();
@@ -92,6 +86,3 @@ const Homes = ({category}) => {
   
 
 export default Homes;
-=======
-export default Home
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a

@@ -1,10 +1,6 @@
 import React from "react";
 import doc1 from '../assets/doc1.png';
-<<<<<<< HEAD
 // import doc2 from '../assets/doc2.png';
-=======
-import doc2 from '../assets/doc2.png';
->>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 
 const hospitals = [
   { id: 1, name: "City Hospital", location: "New York, USA" },

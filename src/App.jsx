@@ -49,7 +49,7 @@ const App = () => {
   const isLawyerPage =location.pathname.includes("/home/lawyer") || location.pathname.includes("/allLawyers")||
                       location.pathname.includes("/lawyers") || location.pathname.includes("/Lawyerschedule")||
                       location.pathname.includes("/about/lawyer") || location.pathname.includes("/LawyerContact")
-                      || location.pathname.includes("/lawyerAppointment/")||location.pathname.includes("/Listing/lawyer/lawyer");
+                      || location.pathname.includes("/lawyerAppointment/")||location.pathname.includes("/Listing/lawyer/all");
                       
                       
   //  location.pathname.includes("/lawyers") || location.pathname.includes("/allLawyers")
