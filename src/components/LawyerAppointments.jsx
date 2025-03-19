@@ -11,7 +11,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import './css/Services.css';
 
 const lawyerAppointments = () => {
+<<<<<<< HEAD
   const { docId,category } = useParams();
+=======
+  const { docId } = useParams();
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
    const[schedul,setSchedul]=useState(false);
       const [modalShow, setModalShow] = React.useState(false);  
   const { Lawyerss, currencySymbol } = useContext(AppContext);

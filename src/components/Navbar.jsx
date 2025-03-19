@@ -1,6 +1,10 @@
 import React, { useState,useEffect } from 'react'
 import {assets, DoctorNav} from '../assets/assets'
+<<<<<<< HEAD
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
+=======
+import { NavLink, useNavigate } from 'react-router-dom'
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 import docpro from '../assets/docpro.png'
 import './css/Services.css'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -12,12 +16,15 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const Navbar = () => {
+<<<<<<< HEAD
    
   const {category}=useParams();
 
 
 
 
+=======
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 
     const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false)
@@ -140,10 +147,17 @@ const fetchData= async(lattitude,longitude) =>{
 
 <ul className="hidden md:flex items-center gap-6 md:gap-10 font-medium text-medium sm:text-lg md:text-lg">
   {[
+<<<<<<< HEAD
     { path: "/home/doctor", label: "HOME" },
     { path: "/Listing/doctor/doctor", label: "ALL DOCTORS" },
     { path: "/Schedules", label: "SCHEDULE" },
     { path: "/about/doctor", label: "ABOUT" },
+=======
+    { path: "/home", label: "HOME" },
+    { path: "/doctors", label: "ALL DOCTORS" },
+    { path: "/Schedules", label: "SCHEDULE" },
+    { path: "/about", label: "ABOUT" },
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
     { path: "/contact", label: "CONTACT" }
   ].map((item, index) => (
     <NavLink key={index} to={item.path} className="relative hover:text-purple-500">

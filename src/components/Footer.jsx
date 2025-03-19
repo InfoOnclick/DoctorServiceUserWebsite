@@ -1,7 +1,10 @@
 import React from "react";
 import { assets } from "../assets/assets";
 import docpro from '../assets/docpro.png'
+<<<<<<< HEAD
 import { useParams } from "react-router-dom";
+=======
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 
 const Footer = () => {
   return (
@@ -47,6 +50,7 @@ const Footer = () => {
   );
 };
 
+<<<<<<< HEAD
 // const FooterData=[
 //   {
 //     key:doctor,
@@ -123,4 +127,6 @@ const FooterPage = () => {
 };
 
 
+=======
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
 export default Footer;

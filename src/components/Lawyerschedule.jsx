@@ -48,7 +48,11 @@ import { useNavigate } from 'react-router-dom';
               <Card style={{}}>
                 <div style={{display:'flex',flexDirection:'row'}}>
                 <div style={{marginLeft:'20px',marginTop:'20px'}}>
+<<<<<<< HEAD
                      <Card.Img variant="top" src="https://i.pinimg.com/originals/ed/39/6d/ed396d80c3c06f625c443a03ae78f0f3.jpg" style={{height:100,width:120}}/>
+=======
+                     <Card.Img variant="top" src="https://th.bing.com/th/id/OIP.hKGZDELu0fyvdWaDP0HUiwHaFj?rs=1&pid=ImgDetMain" style={{height:90,width:120}}/>
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
                 </div>
                 <div style={{marginLeft:'40px',marginTop:'20px'}}>
                    <Card.Text>Dr. Timothy White</Card.Text>

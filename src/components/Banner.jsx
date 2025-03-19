@@ -2,10 +2,16 @@ import React from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
 import './css/Services.css'
+<<<<<<< HEAD
 import { useParams } from 'react-router-dom'
 
 const Banner = () => {
      
+=======
+
+const Banner = () => {
+
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
     const navigate = useNavigate()
 
   return (
@@ -41,6 +47,7 @@ const Banner = () => {
   )
 }
 
+<<<<<<< HEAD
 
 const Banners=({category})=>{
   // const {category}=useParams();
@@ -79,3 +86,6 @@ const Banners=({category})=>{
   )
 }
 export default Banners
+=======
+export default Banner
+>>>>>>> 51e9133feb4d5653fe2f48e27168ec5c1532e66a
