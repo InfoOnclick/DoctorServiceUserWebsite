@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playwrite+CO:wght@100..400&family=Playwrite+NL:wght@100..400&family=Playwrite+VN:wght@100..400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: outfit;
+}
+
+.active hr{
+    @apply block
+}
+
+::-webkit-scrollbar{
+    @apply hidden
+}
+#nav {
+    position: sticky;
+    top: 0;
+    
+    background-color: rgb(244, 238, 238);
+    z-index: 1000; /* Keeps it on top */
+    
+  }
+  #navLinks{
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+
+@media (max-width:750px){
+    .active p{
+        @apply text-white bg-primary
+    }
+    #nav {
+        position: sticky;
+        top: 0;
+      
+        background-color: white;
+        
+        z-index: 1000; /* Keeps it on top */
+       
+      }
+}

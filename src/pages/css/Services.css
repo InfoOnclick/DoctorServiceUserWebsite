@@ -1,0 +1,172 @@
+ 
+ .container{
+  height: 500px;
+  padding-top:100px ;
+
+ }
+ .heading{
+text-align: center;
+font-size: 30px;
+
+ }
+ .Sections{
+   flex: 1 ;
+    display:flex;
+    flex-direction:row;
+    padding:80;
+    margin-top: 30px;
+    justify-content:center;
+    align-items:center;
+   
+      
+}
+.doctor{
+    margin: 50px;
+    border-radius: 35px;
+ 
+}
+.lawyer{
+  margin: 50px;
+  border-radius: 35px;
+
+}
+.deptName{
+    text-align: center;
+    font-size: 25px;
+}
+.dept{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 30px;
+   
+   
+}
+
+
+#rightImg{
+    flex-wrap: wrap;
+
+   bottom: 80px;
+   
+}
+
+#typeImg{
+    height:100px;
+    width: 120px;
+    border-radius: 20px;
+}
+
+.custom-outline {
+    border: 2px solid blue !important;
+    color: blue !important;
+
+  }
+
+  .custom-outline:hover {
+    background-color: #575de3 !important; /* Custom hover background */
+    color: white !important;
+  }
+
+  .dateIcon-outline {
+    border: 2px solid blue !important;
+    color: blue !important;
+  }
+
+  .dateIcon-outline:hover {
+    background-color: #575de3 !important; /* Custom hover background */
+    color: white !important;
+    filter: invert(0);
+    content: "📅";
+  }
+  #serHead{
+    font-size: 28px;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      /* background-color: lightblue; */
+    }
+    #serHead{
+      font-size: 19px;
+      font-weight: 500;
+    }
+    .Sections{
+    display: flex;
+    justify-content: center;
+   
+    }
+    #servButton{
+      width: 90px;
+      /* margin: 20px; */
+   
+    }
+    .custom-outline {
+      border: 2px solid blue !important;
+      color: blue !important;
+      
+    }
+    #lawServ{
+      width: 90px;
+      /* margin: 20px; */
+    }
+     #lawIcon{
+      width: 50px;
+
+    }
+    #but{
+      font-size: 12px;
+    }
+    #modelContainer{
+      /* height: 300px;
+      width: 200px; */
+    }
+    /* #timePicker{
+      height:90px;
+      font-size: 11px;
+      width: auto;
+    } */
+    #DocSlot{
+       width: 50px;
+       
+       font-size: 10px;
+    }
+    #timePick{
+      width: 70px;
+
+    
+    }
+    #modelcontainer{
+      width: 200px;
+    }
+  #modelHeader{
+    font-size: 17px;
+  }
+  #selectDate{
+    font-size: 14px;
+  }
+  #selectTime{
+    font-size: 14px;
+  }
+  #makeAppoint{
+    font-size: 12px;
+  }
+  .react-datepicker-popper {
+    width: 100% !important; /* Ensure the popup takes full width on small screens */
+  }
+
+  .react-datepicker__triangle {
+    left: 50%;
+    transform: translateX(-50%); /* Center the triangle under the input field */
+  }
+  #BookingHeader{
+    font-size: 17px;
+  }
+  
+  #BookingSubtitle{
+    font-size: 14px;
+  }
+  #BookingButton{
+    font-size: 15px;
+  }
+  }
