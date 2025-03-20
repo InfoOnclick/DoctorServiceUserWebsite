@@ -39,6 +39,7 @@ import SpecialMenu from './components/SpecialityMenu'
 import TopOnes from './components/TopDoctors'
 import Banners from './components/Banner'
 import DoctorsFilter from './pages/Doctors'
+import ScheduleList from './components/SchedulePage'
 
 const App = () => {
   const location = useLocation();
@@ -73,6 +74,7 @@ const App = () => {
         <Route path="/lawyerNav" element={<LawyerNavbar/>}/>
         <Route path="/footer" element={<Footer/>}/>
         <Route path="/lawyerFoot" element={<LawyerFooter/>}/>
+        <Route path="/SchedulePage" element={<ScheduleList/>}/>
         {/* <Route path='/home/' element={<Homes/>}/> */}
         <Route path='/doctors' element={<Doctors/>}/>
         <Route path='/Listing/:category/:speciality' element={<DoctorsFilter/>}/>

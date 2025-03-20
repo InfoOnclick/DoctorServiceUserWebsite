@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
@@ -12,75 +12,164 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import './css/Services.css';
 import { assets } from '../assets/assets';
+import { scheduleData } from "../assets/assets";
 import doc from '../assets/doc7.png'
 // import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 export default function Schedules() {
-    const[num,setnum]=useState(20);
-    const[schedul,setSchedul]=useState(false);
-    const [modalShow, setModalShow] = React.useState(false);  
+    // const[num,setnum]=useState(20);
+    // const[schedul,setSchedul]=useState(false);
+    // const [modalShow, setModalShow] = React.useState(false);  
+
+      const [activeTab, setActiveTab] = useState("Upcoming");
+      const [modalShow, setModalShow] = useState(false);
+    
+      // Filter schedules based on active tab
+      const filteredSchedules = scheduleData.filter((item) => item.status === activeTab);
+
 
    
   return (
   
-    <div>
-      <h1 style={{textAlign:'center',fontSize:'30px'}}>Schedules</h1>
+//     <div>
+//       <h1 style={{textAlign:'center',fontSize:'30px'}}>Schedules</h1>
 
-        <Nav variant="tabs" defaultActiveKey="#first"  style={{display:'flex',justifyContent:'space-evenly',alignItems:'center',marginTop:'20px',borderBottom:'none',}}>
-          <Nav.Item className="NavItem" onClick={()=>{setnum(10);setSchedul(false);}}>
-            <Nav.Link href="#first" className="NavLink">Upcoming</Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="NavItem" onClick={()=>{setnum(9); setSchedul(true);}}>
-            <Nav.Link href="#link" className="NavLink">Completed</Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="NavItem" onClick={()=>{setnum(5); setSchedul(true);}}>
-            <Nav.Link href="#disabled" className="NavLink">
-              Cancelled
-            </Nav.Link>
-          </Nav.Item>
-        </Nav>
+//         <Nav variant="tabs" defaultActiveKey="#first"  style={{display:'flex',justifyContent:'space-evenly',alignItems:'center',marginTop:'20px',borderBottom:'none',}}>
+//           <Nav.Item className="NavItem" onClick={()=>{setnum(10);setSchedul(false);}}>
+//             <Nav.Link href="#first" className="NavLink">Upcoming</Nav.Link>
+//           </Nav.Item>
+//           <Nav.Item className="NavItem" onClick={()=>{setnum(9); setSchedul(true);}}>
+//             <Nav.Link href="#link" className="NavLink">Completed</Nav.Link>
+//           </Nav.Item>
+//           <Nav.Item className="NavItem" onClick={()=>{setnum(5); setSchedul(true);}}>
+//             <Nav.Link href="#disabled" className="NavLink">
+//               Cancelled
+//             </Nav.Link>
+//           </Nav.Item>
+//         </Nav>
         
-        <div style={{display:'flex',justifyContent:'space-evenly',alignItems:'center',marginTop:'50px',borderBottom:'none'}}>
-        <Row xs={1} md={4} className="g-2">
-      {Array.from({ length: num }).map((_, idx) => (
-        <Col key={idx}>
-          <Card style={{}}>
-            <div style={{display:'flex',flexDirection:'row'}}>
-            <div style={{marginLeft:'20px',marginTop:'20px'}}>
-                 <Card.Img variant="top" src={doc} style={{height:90,width:120}}/>
-            </div>
-            <div style={{marginLeft:'40px',marginTop:'20px'}}>
-               <Card.Text>Dr. Anastasya syahid</Card.Text>
-               <Card.Text>Dental Specialist</Card.Text>
-            </div>
-            </div>
-            <Card.Body>
-               <div style={{alignSelf:'center',fontSize:15,marginBottom:'20px',display:'flex',justifyContent:'space-between',backgroundColor:'#575de3',padding:'6px 15px',borderRadius:'10px',color:'white'}}>
-              {/* <input id="dateRequired" type="date" name="dateRequired" style={{backgroundColor:'#575de3',padding:'10px',borderRadius:'10px'}} /> */}
-              <p>Mon,July 29</p>
-              <p>11:00AM - 12:00PM</p>
+//         <div style={{display:'flex',justifyContent:'space-evenly',alignItems:'center',marginTop:'50px',borderBottom:'none'}}>
+//         <Row xs={1} md={4} className="g-2">
+//       {Array.from({ length: num }).map((_, idx) => (
+//         <Col key={idx}>
+//           <Card style={{}}>
+//             <div style={{display:'flex',flexDirection:'row'}}>
+//             <div style={{marginLeft:'20px',marginTop:'20px'}}>
+//                  <Card.Img variant="top" src={doc} style={{height:90,width:120}}/>
+//             </div>
+//             <div style={{marginLeft:'40px',marginTop:'20px'}}>
+//                <Card.Text>Dr. Anastasya syahid</Card.Text>
+//                <Card.Text>Dental Specialist</Card.Text>
+//             </div>
+//             </div>
+//             <Card.Body>
+//                <div style={{alignSelf:'center',fontSize:15,marginBottom:'20px',display:'flex',justifyContent:'space-between',backgroundColor:'#575de3',padding:'6px 15px',borderRadius:'10px',color:'white'}}>
+//               {/* <input id="dateRequired" type="date" name="dateRequired" style={{backgroundColor:'#575de3',padding:'10px',borderRadius:'10px'}} /> */}
+//               <p>Mon,July 29</p>
+//               <p>11:00AM - 12:00PM</p>
+//               </div>
+//               {!schedul ? (
+//                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+//                       <Button variant="outline-dark" style={{ borderRadius: '20px' }} onClick={() => setModalShow(true)}>Reschedule</Button>
+//                        <Button variant="outline-dark" style={{ borderRadius: '20px' }} >Cancel</Button>
+//                    </div>
+//               ) : null}
+//  <MyverticallyCenteredModal
+//         show={modalShow}
+//         onHide={() => setModalShow(false)}
+//       />
+//             </Card.Body>
+//           </Card>
+//         </Col>
+//       ))}
+//     </Row>
+//   </div>
+      
+//     </div>
+<div>
+<h1 style={{ textAlign: "center", fontSize: "30px" }}>Schedules</h1>
+
+<Nav
+  variant="tabs"
+  defaultActiveKey="Upcoming"
+  style={{
+    display: "flex",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    marginTop: "20px",
+    borderBottom: "none",
+  }}
+>
+  {["Upcoming", "Completed", "Cancelled"].map((status) => (
+    <Nav.Item key={status} className="NavItem">
+      <Nav.Link className="NavLink" onClick={() => setActiveTab(status)}>
+        {status}
+      </Nav.Link>
+    </Nav.Item>
+  ))}
+</Nav>
+
+<div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "50px", flexWrap: "wrap" }}>
+  <Row xs={1} sm={2} md={3} className="g-4" style={{ width: "100%", maxWidth: "1200px" }}>
+    {filteredSchedules.length > 0 ? (
+      filteredSchedules.map((item) => (
+        <Col key={item.id}>
+          <Card style={{ borderRadius: "10px", boxShadow: "0px 4px 8px rgba(0,0,0,0.1)" }}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", padding: "15px" }}>
+              <Card.Img variant="top" src={item.image} style={{ height: 90, width: 120, borderRadius: "10px" }} />
+              <div style={{ marginLeft: "15px", flex: 1 }}>
+                <Card.Text style={{ fontWeight: "bold", fontSize: "1rem", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {item.doctor}
+                </Card.Text>
+                <Card.Text style={{ fontSize: "0.9rem", color: "#6c757d" }}>{item.specialty}</Card.Text>
               </div>
-              {!schedul ? (
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <Button variant="outline-dark" style={{ borderRadius: '20px' }} onClick={() => setModalShow(true)}>Reschedule</Button>
-                       <Button variant="outline-dark" style={{ borderRadius: '20px' }} >Cancel</Button>
-                   </div>
-              ) : null}
- <MyverticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
+            </div>
+
+            <Card.Body>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  backgroundColor: "#575de3",
+                  padding: "8px 15px",
+                  borderRadius: "10px",
+                  color: "white",
+                  fontSize: "0.9rem",
+                }}
+              >
+                <p style={{ margin: 0 }}>{item.date}</p>
+                <p style={{ margin: 0 }}>{item.time}</p>
+              </div>
+
+              {activeTab === "Upcoming" && (
+                <div style={{ display: "flex", justifyContent: "space-between", marginTop: "10px", flexWrap: "wrap", gap: "10px" }}>
+                  <Button variant="outline-dark" style={{ borderRadius: "20px", flex: 1 }} onClick={() => setModalShow(true)}>
+                    Reschedule
+                  </Button>
+                  <Button variant="outline-dark" style={{ borderRadius: "20px", flex: 1 }}>
+                    Cancel
+                  </Button>
+                </div>
+              )}
             </Card.Body>
           </Card>
         </Col>
-      ))}
-    </Row>
-  </div>
-      
-    </div>
+      ))
+    ) : (
+      <p style={{ textAlign: "center", marginTop: "20px", fontSize: "1.1rem", color: "#6c757d" }}>No schedules found.</p>
+    )}
+  </Row>
+</div>
+
+
+<MyverticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
+</div>
   )
 }
 
@@ -126,7 +215,9 @@ function MyverticallyCenteredModal(props) {
 
     setTimeout(() => {
         setShowAlert(false);
-        navigate('/doctors');
+        // setModalShow(false);
+        // navigate('/Schedules');
+      
     }, 3000);
 };
   

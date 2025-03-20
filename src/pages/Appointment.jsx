@@ -10,6 +10,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './css/Services.css';
+import { Card, CardMedia, CardContent, Typography, Grid, Container } from "@mui/material";
 import { Navigation } from "@mui/icons-material";
 import { RiVideoOnLine,RiVideoOffLine } from "react-icons/ri";
 import { Color } from '../Colors/Color';
@@ -386,9 +387,9 @@ const dateAvailability = [
     if (!availability) {
         return []; // No available slots for this day
     }
-
+ return availability.onlineTimeSlots;
     // Return online or offline slots based on isOnline flag
-    return isOnline ? availability.onlineTimeSlots : availability.offlineTimeSlots;
+    // return isOnline ? availability.onlineTimeSlots : availability.offlineTimeSlots;
 }
 
   
@@ -439,7 +440,7 @@ const dateAvailability = [
         />
       </div>
 
-      <div>
+      {/* <div>
       <h4 id="selectType">Select Appointment Type</h4><br/>
       <div className="flex gap-4">
       <Button
@@ -458,15 +459,9 @@ const dateAvailability = [
   <RiVideoOffLine size={20} /> Offline
 </Button>
       </div>
-      </div>
+      </div> */}
 
- 
-      
-
-    </div>
-    <br/>
-    {/* Time Slot Selection */}
-    <div style={{ display: "flex", flexDirection: "row", gap: 5, marginLeft: "5px", flexWrap: "wrap" }}>
+<div style={{ display: "flex", flexDirection: "row", gap: 5, marginLeft: "5px", flexWrap: "wrap" }}>
         <h4 style={{ width: "100%" }} id="selectTime">
           Select A Time Slot
         </h4>
@@ -490,7 +485,37 @@ const dateAvailability = [
   ))    
 )}
       </div>
-      <br/>
+      
+
+    </div>
+
+    {/* <br/> */}
+    {/* Time Slot Selection */}
+    {/* <div style={{ display: "flex", flexDirection: "row", gap: 5, marginLeft: "5px", flexWrap: "wrap" }}>
+        <h4 style={{ width: "100%" }} id="selectTime">
+          Select A Time Slot
+        </h4>
+
+        {dataFilter.length === 0 ? (
+  <p>No slots available</p>
+) : (
+  dataFilter.map((item) => (
+    <div
+      key={item.time}
+      style={{ alignSelf: "center", display: "flex", flexDirection: "column" }}
+    >
+      <Button
+        variant={selectedTime === item.time ? "primary" : "outline-primary"}
+        id="DocSlot"
+        onClick={() => handleTimeSelection(item.time)}
+      >
+        {item.time}
+      </Button>
+    </div>
+  ))    
+)}
+      </div> */}
+      {/* <br/> */}
        
         
        
@@ -503,9 +528,9 @@ const dateAvailability = [
                      
                    </div>
               {/* // ) : null} */}
-      {/* <UserDataModel date={selectedDate} time={selectedTime}
+      <UserDataModel date={selectedDate} time={selectedTime}
       show={modalShow}
-      onHide={() => setModalShow(false)}/> */}
+      onHide={() => setModalShow(false)}/>
       </Modal.Footer>
       
     </Modal>
@@ -587,16 +612,89 @@ function HospitalModel(props) {
   const navigate = useNavigate();
    const time=props.time;
    const date=props.date;
-  const data = [
-    { key:1,time: "11AM - 12PM" },
-    { key:2,time: "1PM - 2PM" },
-    { key:2,time: "2PM - 3PM" },
-    { key:2,time: "3PM - 4PM" },
-    { key:2,time: "5PM - 6PM" },
-    { key:2,time: "6PM - 7PM" },
-    { key:2,time: "8PM - 9PM" },
-    { key:2,time: "9PM - 10PM" },
-    { key:2,time: "10PM - 11PM" },
+
+   const[vertModel,setVertModel]=useState(false);
+
+   const [selectedHospital, setSelectedHospital] = useState(null);
+   const [open, setOpen] = useState(false);
+ 
+   const handleOpen = (hospital) => {
+     setSelectedHospital(hospital);
+     setOpen(true);
+     setVertModel(true);
+   };
+ 
+   const handleClose = () => {
+     setOpen(false);
+     setSelectedHospital(null);
+   };
+
+  // const data = [
+  //   { key:1,time: "11AM - 12PM" },
+  //   { key:2,time: "1PM - 2PM" },
+  //   { key:2,time: "2PM - 3PM" },
+  //   { key:2,time: "3PM - 4PM" },
+  //   { key:2,time: "5PM - 6PM" },
+  //   { key:2,time: "6PM - 7PM" },
+  //   { key:2,time: "8PM - 9PM" },
+  //   { key:2,time: "9PM - 10PM" },
+  //   { key:2,time: "10PM - 11PM" },
+  // ];
+
+  const hospitalList = [
+    {
+      'hospital': 'Government Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://tse3.mm.bing.net/th?id=OIP.VZPscNUsvUH57iUCjh2QKwHaDj&pid=Api&P=0&h=180',
+      'fees': '10',
+    },
+    {
+      'hospital': 'Krishna Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://tse3.mm.bing.net/th?id=OIP.HtRM62gzrScL9qAS5J2FjwHaDe&pid=Api&P=0&h=180',
+      'fees': '80',
+    },
+    {
+      'hospital': 'Apollo Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://cdn.apollohospitals.com/dev-apollohospitals/2022/08/Apollo-Gurgaon-Hospital-1024x481.jpg',
+      'fees': '100',
+    },
+    {
+      'hospital': 'Government Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://tse3.mm.bing.net/th?id=OIP.VZPscNUsvUH57iUCjh2QKwHaDj&pid=Api&P=0&h=180',
+      'fees': '10',
+    },
+    {
+      'hospital': 'Krishna Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://tse3.mm.bing.net/th?id=OIP.HtRM62gzrScL9qAS5J2FjwHaDe&pid=Api&P=0&h=180',
+      'fees': '80',
+    },
+    {
+      'hospital': 'Apollo Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://cdn.apollohospitals.com/dev-apollohospitals/2022/08/Apollo-Gurgaon-Hospital-1024x481.jpg',
+      'fees': '100',
+    }, {
+      'hospital': 'Government Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://tse3.mm.bing.net/th?id=OIP.VZPscNUsvUH57iUCjh2QKwHaDj&pid=Api&P=0&h=180',
+      'fees': '10',
+    },
+    {
+      'hospital': 'Krishna Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://tse3.mm.bing.net/th?id=OIP.HtRM62gzrScL9qAS5J2FjwHaDe&pid=Api&P=0&h=180',
+      'fees': '80',
+    },
+    {
+      'hospital': 'Apollo Hospital',
+      'address': 'Chennai Bypass Road , Ariyamangalam Area, Old Palpannai, Tiruchirappalli, Tamil Nadu, 620010',
+      'image': 'https://cdn.apollohospitals.com/dev-apollohospitals/2022/08/Apollo-Gurgaon-Hospital-1024x481.jpg',
+      'fees': '100',
+    },
   ];
 
   const[name,setName]=useState('');
@@ -626,14 +724,56 @@ function HospitalModel(props) {
       style={{background:'transparent'}}
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton style={{
+      position: "sticky",
+      top: 0,
+      zIndex: 1,
+      backgroundColor: "white",
+      borderBottom: "1px solid #dee2e6"
+    }}>
         <Modal.Title className="contained-modal-title-vcenter" id='BookingHeader'> 
-   Hospital Model
+        Select Hospital
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-     
+      <Container>
+      <Grid container spacing={3}>
+        {hospitalList.map((hospital, index) => (
+          <Grid item xs={12} sm={8} md={4} key={index}>
+            <Card onClick={() => handleOpen(hospital)} sx={{ cursor: "pointer", transition: "0.3s", "&:hover": { transform: "scale(1.05)" } }}>
+              <CardMedia component="img" height="140" image={hospital.image} alt={hospital.hospital} />
+              <CardContent>
+                <Typography variant="h6">{hospital.hospital}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {hospital.address}
+                </Typography>
+                <Typography variant="body1" sx={{ fontWeight: "bold", mt: 1 }}>
+                  Fees: ₹{hospital.fees}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
 
+      {/* Modal for Hospital Details */}
+      <Modal open={open} onClose={handleClose} aria-labelledby="hospital-details-modal" centered>
+        <div style={{ background: "white", padding: "20px", margin: "auto", width: "50%", borderRadius: "10px", textAlign: "center" }}>
+          {selectedHospital && (
+            <>
+              <Typography variant="h5" id="hospital-details-modal">{selectedHospital.hospital}</Typography>
+              <img src={selectedHospital.image} alt={selectedHospital.hospital} style={{ width: "100%", height: "auto", marginTop: "10px", borderRadius: "8px" }} />
+              <Typography variant="body1" sx={{ mt: 2 }}>{selectedHospital.address}</Typography>
+              <Typography variant="h6" sx={{ fontWeight: "bold", mt: 2 }}>Fees: ₹{selectedHospital.fees}</Typography>
+            </>
+          )}
+        </div>
+      </Modal>
+    </Container>
+    <MyVerticallyCenteredModal
+        show={vertModel}
+        onHide={() => setVertModel(false)}
+      />
       </Modal.Body>
      
  
@@ -662,10 +802,15 @@ function UserDataModel(props) {
   const[name,setName]=useState('');
   const[Age,setAge]=useState('');
   const [selectedGender, setSelectedGender] = useState('Gender');
+  const [selectedsymptoms, setSelectedsymptoms] = useState('Select Symptoms');
 
   const handleSelectChange = (e) => {
       setSelectedGender(e.target.value);
   };  
+
+  const handleSelectSymptom = (e) => {
+   setSelectedsymptoms(e.target.value);
+};
 
   const BookAppointment = () => {
     console.log("Form Data:", { name, Age, selectedGender,time,date });
@@ -724,13 +869,26 @@ function UserDataModel(props) {
                    
                 </Form.Select>
                 </Form.Group>
+<br/>
+                <Form.Group>
+            <Form.Label id='BookingSubtitle'>Symptoms</Form.Label>
+            <Form.Select value={selectedGender} onChange={handleSelectSymptom}>
+               
+                    <option> Select Symptom</option>
+                    <option value="HeadAche">HeadAche</option>
+                    <option value="LegPain">LegPain</option>
+                    <option value="BackPain">BackPain</option>
+                    <option value="LegPain">LegPain</option>
+                    <option value="LegPain">LegPain</option>
+                </Form.Select>
+                </Form.Group>
                 <div>
                 <Button variant="outline-success" 
                 //  href="/Schedules" 
                  onClick={BookAppointment} style={{alignItems:'center' , borderRadius: '20px',marginTop:'20px',padding:'10px',fontSize:'15px' }}  >Complete Booking</Button>
                 </div>          
           </Form>
-
+          
       </Modal.Body>
      
  

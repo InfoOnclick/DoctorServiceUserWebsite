@@ -15,6 +15,7 @@ import info_icon from './info_icon.svg'
 import upload_icon from './upload_icon.png'
 import stripe_logo from './stripe_logo.png'
 import razorpay_logo from './razorpay_logo.png'
+import doc from './doc7.png'
 import doc1 from './doc1.png'
 import doc2 from './doc2.png'
 import doc3 from './doc3.png'
@@ -65,12 +66,12 @@ export const DoctorNav = [
     },
     {
         name: 'Doctors',
-        to: '/doctors/:speciality/:category'
+        to: '/Listing/doctor/all'
     },
-    {
-        name: 'Doctors',
-        to: '/doctors'
-    },
+    // {
+    //     name: 'Doctors',
+    //     to: '/doctors'
+    // },
     {
         name: 'Schedule',
         to: '/Schedules'
@@ -595,5 +596,171 @@ export const DoctorHome=[
     
 ]
 
+
+export const scheduleData = [
+  {
+    id: 1,
+    doctor: "Dr. Anastasya Syahid",
+    specialty: "Dental Specialist",
+    date: "Mon, July 29",
+    time: "11:00AM - 12:00PM",
+    status: "Upcoming",
+    image: doc, // Replace with actual doctor image
+  },
+  {
+    id: 2,
+    doctor: "Dr. John Doe",
+    specialty: "Cardiologist",
+    date: "Wed, Aug 2",
+    time: "3:00PM - 4:00PM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 3,
+    doctor: "Dr. John Doe",
+    specialty: "Cardiologist",
+    date: "Wed, Aug 2",
+    time: "3:00PM - 4:00PM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 4,
+    doctor: "Dr. John Doe",
+    specialty: "Cardiologist",
+    date: "Wed, Aug 2",
+    time: "3:00PM - 4:00PM",
+    status: "Completed",
+    image: doc,
+  },
+  
+  {
+    id: 5,
+    doctor: "Dr. John Doe",
+    specialty: "Cardiologist",
+    date: "Wed, Aug 2",
+    time: "3:00PM - 4:00PM",
+    status: "Completed",
+    image: doc,
+  },
+  {
+    id: 6,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Cancelled",
+    image: doc,
+  },
+  {
+    id: 7,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Cancelled",
+    image: doc,
+  },
+  {
+    id: 8,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Cancelled",
+    image: doc,
+  },
+  {
+    id: 9,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Cancelled",
+    image: doc,
+  },
+  {
+    id: 10,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Cancelled",
+    image: doc,
+  },
+  {
+    id: 11,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 12,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 13,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 14,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 15,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 16,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 17,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+  {
+    id: 18,
+    doctor: "Dr. Sarah White",
+    specialty: "Neurologist",
+    date: "Fri, Aug 4",
+    time: "10:00AM - 11:00AM",
+    status: "Upcoming",
+    image: doc,
+  },
+];
 
 
