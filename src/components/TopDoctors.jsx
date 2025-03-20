@@ -82,7 +82,7 @@ const TopDoctors = () => {
 
       <button
         onClick={() => {
-          navigate("/doctors");
+          navigate("/Listing/doctor/all");
           scrollTo(0, 0);
         }}
         className="bg-100 text-black px-12 py-3 rounded-full mt-10 font-medium"
@@ -132,14 +132,15 @@ const TopDoctors = () => {
     }
   }, []);
 
-  const handleNavigation = () => {
-    const categoryParam = category === 'doctor' ? 'doctor' : 'lawyer';
-    if (category === 'doctor') {
-      navigate(`/appointment/${item._id}?category=${categoryParam}`);
-    } else {
-      navigate(`/lawyerAppointment/${item._id}?category=${categoryParam}`);
-    }
-  };
+  // const handleNavigation = () => {
+  //   const categoryParam = category === 'doctor' ? 'doctor' : 'lawyer';
+  //   if (category === 'doctor') {
+     
+  //     navigate(`/appointment/${item._id}?category=${categoryParam}`);
+  //   } else {
+  //     navigate(`/lawyerAppointment/${item._id}?category=${categoryParam}`);
+  //   }
+  // };
 
   return(
     <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10" id="Topdoc2">
@@ -154,7 +155,14 @@ const TopDoctors = () => {
         {(category==='doctor'?doctors:Lawyerss).slice(0, 10).map((item, index) => (
           <div
             onClick={() => {
-              handleNavigation
+              const categoryParam = category === 'doctor' ? 'doctor' : 'lawyer';
+    if (category === 'doctor') {
+     
+      navigate(`/appointment/${item._id}`);
+    } else {
+      navigate(`/lawyerAppointment/${item._id}`);
+    }
+             
               // navigate("/doctors");
               scrollTo(0, 0);
             }}
@@ -180,7 +188,7 @@ const TopDoctors = () => {
 
     <button
       onClick={() => {
-        navigate("/doctors");
+        navigate("/Listing/doctor/all");
         scrollTo(0, 0);
       }}
       className="bg-100 text-black px-12 py-3 rounded-full mt-10 font-medium"
