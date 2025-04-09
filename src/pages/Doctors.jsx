@@ -187,7 +187,7 @@ const handleChange = (event) => {
 
 
 
-    <div className='flex flex-col sm:flex-row items-start gap-3 mt-5'>
+    <div className='flex flex-col sm:flex-row items-start gap-2 mt-5'>
       <button className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showFilter ? 'bg-primary text-white' : ''}`} onClick={()=>{setShowFilter(prev => !prev);}}>Filters</button>
      <div className={`flex-col gap-4 text-sm text-gray-600 ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
      {(category === 'doctor' ? specialityData : specialityLawyers).map((item) => {
@@ -218,7 +218,8 @@ return (
       </div>
 
 
-      <div className="w-full overflow-x-auto sm:grid sm:grid-cols-auto gap-8 gap-y-6 flex flex-nowrap" id='nocards'>
+      <div className="w-full overflow-x-auto  sm:grid sm:grid-cols-auto gap-8 gap-y-6 flex flex-nowrap" id='nocards'>
+      {/* <div className="w-full overflow-x-auto flex flex-nowrap space-x-6" id="nocards"> */}
   {filterDoc.length === 0 ? (
     <h3 style={{textAlign:'center'}}>No data Found</h3>
   ) : (

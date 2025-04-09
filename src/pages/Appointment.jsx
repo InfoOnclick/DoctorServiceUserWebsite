@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState,useRef } from "react";
 import {  useParams,useNavigate  } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
@@ -14,6 +14,8 @@ import { Card, CardMedia, CardContent, Typography, Grid, Container } from "@mui/
 import { Navigation } from "@mui/icons-material";
 import { RiVideoOnLine,RiVideoOffLine } from "react-icons/ri";
 import { Color } from '../Colors/Color';
+import Multiselect from 'multiselect-react-dropdown';
+        
 // import { Button } from '@mui/material';
 
 
@@ -782,6 +784,14 @@ function HospitalModel(props) {
   );
 }
 
+const symptomsOptions = [
+  { name: 'HeadAche', id: 1 },
+  { name: 'LegPain', id: 2 },
+  { name: 'BackPain', id: 3 },
+  { name: 'StomachPain', id: 4 },
+  { name: 'Cold', id: 5 },
+  
+];
 
 function UserDataModel(props) {
   const navigate = useNavigate();
@@ -798,30 +808,53 @@ function UserDataModel(props) {
     { key:2,time: "9PM - 10PM" },
     { key:2,time: "10PM - 11PM" },
   ];
+  
 
   const[name,setName]=useState('');
   const[Age,setAge]=useState('');
   const [selectedGender, setSelectedGender] = useState('Gender');
-  const [selectedsymptoms, setSelectedsymptoms] = useState('Select Symptoms');
-
+  const [Phone, setPhone] = useState('');
+  const[vertModel,setVertModel]=useState(false);
+  const [selectedSymptoms, setSelectedSymptoms] = useState([]);
+  const[otps,setopts]=useState('');
+  
   const handleSelectChange = (e) => {
       setSelectedGender(e.target.value);
   };  
 
-  const handleSelectSymptom = (e) => {
-   setSelectedsymptoms(e.target.value);
-};
+  const onSelect = (selectedList) => {
+    setSelectedSymptoms(selectedList);
+  };
+
+  const onRemove = (selectedList) => {
+    setSelectedSymptoms(selectedList);
+  };
 
   const BookAppointment = () => {
+  
+    function generateOtp() {
+      return Math.floor(1000 + Math.random() * 9000).toString();
+    }
+    
+    const otp = generateOtp();
+    console.log('Your OTP is:', otp);
+    setopts(otp);
+    setVertModel(true);
     console.log("Form Data:", { name, Age, selectedGender,time,date });
-    alert("Appointment Booked Successfully!");
+    // alert("Appointment Booked Successfully!");
 
     // Redirect to another page after 2 seconds
     setTimeout(() => {
-      navigate("/Schedules"); // Change "/confirmation" to your target route
+      // navigate("/Schedules");   // Change "/confirmation" to your target route
     }, 200);
   
   };
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedHospital(null);
+  };
+
+  
 
   return (
     <Modal
@@ -859,6 +892,16 @@ function UserDataModel(props) {
                 autoFocus
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Label id='BookingSubtitle'>Phone</Form.Label>
+              <Form.Control
+                type="text"
+                value={Phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Enter Phonenumber"
+                autoFocus
+              />
+            </Form.Group>
             <Form.Group>
             <Form.Label id='BookingSubtitle'>Gender</Form.Label>
             <Form.Select value={selectedGender} onChange={handleSelectChange}>
@@ -870,25 +913,46 @@ function UserDataModel(props) {
                 </Form.Select>
                 </Form.Group>
 <br/>
-                <Form.Group>
+       {/* <Form.Group>
+        <Form.Label id="BookingSubtitle">Symptoms</Form.Label>
+        <Form.Control
+          as="select"
+          multiple
+          value={selectedSymptoms}
+          onChange={handleSelectSymptom}
+        >
+          <option value="HeadAche">HeadAche</option>
+          <option value="LegPain">LegPain</option>
+          <option value="BackPain">BackPain</option>
+          <option value="StomachPain">StomachPain</option>
+          <option value="Cold">Cold</option>
+        </Form.Control>
+      </Form.Group> */}
+      <Form.Group >
             <Form.Label id='BookingSubtitle'>Symptoms</Form.Label>
-            <Form.Select value={selectedGender} onChange={handleSelectSymptom}>
-               
-                    <option> Select Symptom</option>
-                    <option value="HeadAche">HeadAche</option>
-                    <option value="LegPain">LegPain</option>
-                    <option value="BackPain">BackPain</option>
-                    <option value="LegPain">LegPain</option>
-                    <option value="LegPain">LegPain</option>
-                </Form.Select>
-                </Form.Group>
+            <Multiselect
+            style={{marginBottom:20}}
+              options={symptomsOptions}
+              onSelect={onSelect}
+              onRemove={onRemove}
+              displayValue="name"
+              placeholder="Select Symptoms"
+              showCheckbox={true}
+              closeOnSelect={false}
+            />
+          </Form.Group>
+                
                 <div>
                 <Button variant="outline-success" 
                 //  href="/Schedules" 
                  onClick={BookAppointment} style={{alignItems:'center' , borderRadius: '20px',marginTop:'20px',padding:'10px',fontSize:'15px' }}  >Complete Booking</Button>
                 </div>          
           </Form>
-          
+          <OTPModel
+        show={vertModel}
+        otp={otps}
+        onHide={() => setVertModel(false)}
+      />
       </Modal.Body>
      
  
@@ -896,6 +960,99 @@ function UserDataModel(props) {
     
   );
 }
+
+
+
+
+function OTPModel(props) {
+  const navigate = useNavigate();
+  const [otp, setOtp] = useState('');
+  const otps=props.otp;
+
+  const handleOtpChange = (value) => {
+    setOtp(value);
+    console.log('Current OTP:', value);
+
+    if (value.length === 4) {
+      // Perform OTP verification here
+      if (value === otps) {
+        alert('OTP verified successfully!');
+        navigate("/Schedules");
+      } else {
+        alert('Invalid OTP. Please try again.');
+      }
+    }
+  };
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      style={{background:'transparent'}}
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title className="contained-modal-title-vcenter" id='BookingHeader'> 
+   Enter OTP
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+            
+      <div className="flex flex-col items-center justify-center space-x-4 space-y-6">
+      <h1 className="text-2xl font-bold">Enter OTP</h1>
+      <OtpInput length={4} onChange={handleOtpChange} />
+      <button
+        className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        
+      >
+        Submit
+      </button>
+    </div>
+      </Modal.Body>
+     
+ 
+    </Modal>
+    
+  );
+}
+
+const OtpInput = ({ length = 4, onChange,props }) => {
+  const inputs = useRef([]);
+
+  const handleChange = (e, index) => {
+    const value = e.target.value;
+    if (!/^\d?$/.test(value)) return; // only allow one digit
+
+    const newOtp = inputs.current.map(input => input.value).join('');
+    onChange(newOtp);
+
+    if (value && index < length - 1) {
+      inputs.current[index + 1].focus();
+    }
+  };
+
+  const handleKeyDown = (e, index) => {
+    if (e.key === 'Backspace' && !inputs.current[index].value && index > 0) {
+      inputs.current[index - 1].focus();
+    }
+  };
+
+  return (
+    <div className="flex space-x-2">
+      {Array.from({ length }).map((_, i) => (
+        <input
+          key={i}
+          ref={el => inputs.current[i] = el}
+          type="text"
+          maxLength={1}
+          className="w-12 h-12 text-center border rounded text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onChange={e => handleChange(e, i)}
+          onKeyDown={e => handleKeyDown(e, i)}
+        />
+      ))}
+    </div>
+  );
+};
 
 
 
